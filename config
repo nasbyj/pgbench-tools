@@ -16,23 +16,25 @@ TESTDIR="tests/tests-9.6"
 
 # SKIPINIT should be set to 1 either when simulating a cold cache, or
 # if you are not using the pgbench tables for your test
-SKIPINIT=0
+SKIPINIT=1
 
 # Set TABBED to 1 to use Javascript for a multi-tabbed display format
-TABBED=0
+TABBED=1
 
 # Set OSDATA to 1 to collect OS data using vmstat and iostat
-OSDATA=1
+OSDATA=0
 
 # Test/result database connection
 TESTHOST=localhost
+TESTHOST=/tmp/
 TESTUSER=`whoami`
-TESTPORT=5432
+TESTPORT=$PGPORT
 TESTDB=pgbench
 
 RESULTHOST="$TESTHOST"
 RESULTUSER="$TESTUSER"
 RESULTPORT="$TESTPORT"
+RESULTPORT=5110
 RESULTDB=results
 
 #
@@ -46,7 +48,9 @@ MAX_WORKERS="auto"
 #MAX_WORKERS=""
 
 SCRIPT="tpc-b_96.sql"
-SCALES="1 10 100 1000"
+SCRIPT="update_96.sql"
+#SCALES="1 10 100 1000"
+SCALES="10"
 SETCLIENTS="1 2 4 8 16 32"
 SETTIMES=3
 
